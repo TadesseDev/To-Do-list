@@ -1,3 +1,7 @@
 import _ from 'lodash';
 import './main.css';
-console.log('to-do-lists with live server');
+import data from './modules/data';
+import { updateTask } from './modules/methods';
+const listContainer = document.getElementById('to-do-lists');
+updateTask(listContainer, data);
+console.log(data);
