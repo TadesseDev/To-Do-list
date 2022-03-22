@@ -1,4 +1,4 @@
-# Awesome book project with ES6 syntax.
+# to do list project 
 
 ### Objectives of this project
 - Use webpack to bundle JavaScript.
