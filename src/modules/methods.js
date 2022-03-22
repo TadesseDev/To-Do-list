@@ -8,8 +8,6 @@ const sortTaskByIndex = (data, mode = 'ascending') => {
 
 // sort and update list of tasks to the place holder
 const updateListOfTasks = (section, data) => {
-  section.innerHTML = `<li><span class="title">Today's To Do</span></li>
-                        <li><label for="new-task"></label><input type="text" id="new-task" placeholder="Add your list"></li>`;
   data = sortTaskByIndex(data);
   data.forEach((task) => {
     const li = document.createElement('li');
