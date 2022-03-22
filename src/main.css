@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#to-do-lists {
+  max-width: 500px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px silver;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  font-size: 1.6rem;
+}
+
+#new-task {
+  outline: none;
+  width: 100%;
+  max-width: 100%;
+  line-height: 30px;
+  border: none;
+  font-size: 1.4rem;
+  padding: 5px;
+  font-style: italic;
+}
+
+li {
+  list-style: none;
+  padding: 15px;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.363);
+  overflow: hidden;
+}
+
+li:hover {
+  border-bottom: 1px solid rgba(192, 192, 192, 0.863);
+}
+
+li:last-child {
+  background-color: rgba(192, 192, 192, 0.322);
+}
+
+li p {
+  margin: 5px;
+  text-align: center;
+}
+
+#to-do-lists li label {
+  margin-left: 5px;
+}
