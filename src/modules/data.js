@@ -1,18 +1,18 @@
 const todoTasks = [
   {
     index: 0,
-    description: 'aa',
-    completed: 'aa',
+    description: 'wash the dishes',
+    completed: false,
   },
   {
-    index: 0,
-    description: 'bb',
-    completed: 'bb',
+    index: 1,
+    description: 'complet to do list project',
+    completed: false,
   },
   {
-    index: 0,
-    description: 'cc',
-    completed: 'cc',
+    index: 2,
+    description: 'fix car',
+    completed: false,
   },
 ];
 
