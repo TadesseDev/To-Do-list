@@ -1,4 +1,4 @@
-# to do list project 
+# To do list 
 
 ### Objectives of this project
 - Use webpack to bundle JavaScript.
@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Down load the project and use webpack](https://github.com/Tadesse-Alemayehu/To-Do-list/tree/list-structure) 🙂
+[Download the project and use webpack](https://github.com/Tadesse-Alemayehu/To-Do-list/tree/list-structure) 🙂
 
 
 ## Getting Started
