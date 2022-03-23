@@ -4,8 +4,13 @@ import { getTaskItem } from '../modules/methods.js';
 class MyTasks {
   static tasks = [];
   static removeItem = (removeTask) => {
-    console.log(removeTask);
     MyTasks.tasks = MyTasks.tasks.filter(task => task.index != removeTask.index);
+    let i = 0;
+    // update task index on each remove
+    MyTasks.tasks.forEach(function (task) {
+      task.index = i;
+      i++;
+    });
     alterBookList(MyTasks.tasks);
   }
   static addItem = (task) => {
