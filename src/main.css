@@ -17,7 +17,22 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif;
 }
-
+#to-do-lists li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 15px;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.363);
+  overflow: hidden;
+}
+#to-do-lists .icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: url("./icons/re-fresh.svg");
+}
 .title {
   font-size: 1.6rem;
 }
@@ -31,14 +46,6 @@ body {
   font-size: 1.4rem;
   padding: 5px;
   font-style: italic;
-}
-
-li {
-  list-style: none;
-  padding: 15px;
-  font-size: 1.3rem;
-  border-bottom: 1px solid rgba(192, 192, 192, 0.363);
-  overflow: hidden;
 }
 
 li:hover {
