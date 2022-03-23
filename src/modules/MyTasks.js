@@ -1,4 +1,6 @@
 import { alterBookList } from './localStorage.js';
+import { getTaskItem } from '../modules/methods.js';
+
 class MyTasks {
   static tasks = [];
   static removeItem = (removeTask) => {
@@ -20,12 +22,8 @@ class MyTasks {
   }
   addToDom(section) {
     const clear = document.getElementById('clear-list');
-    const li = document.createElement('li');
-    const input = `<input type="checkbox" id="${this.index}" name="${this.index}" value="${this.index}"></input>`;
-    const label = `<label for="${this.index}">${this.taskName
-      }</label>`;
-    li.innerHTML = input + label;
-    section.insertBefore(li, clear);
+    getTaskItem(this);
+    section.insertBefore(getTaskItem(this), clear);
   }
   removeFromTaskList = () => {
   }

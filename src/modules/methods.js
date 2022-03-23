@@ -1,3 +1,17 @@
+
+const getTaskItem = (task) => {
+  const li = document.createElement('li');
+  const taskContent = document.createElement('div');
+  const input = `<input type="checkbox" id="${task.index}" name="${task.index}" value="${task.index}"></input>`;
+  const label = `<label for="${task.index}">${task.taskName
+    }</label>`;
+  taskContent.innerHTML = input + label;
+  const icon = document.createElement('span');
+  icon.classList.add('icon');
+  li.appendChild(taskContent);
+  li.appendChild(icon);
+  return li;
+}
 // can be used to sort tasks ascending or descending
 const sortTaskByIndex = (data, mode = 'ascending') => {
   const tempData = [...data];
@@ -10,12 +24,7 @@ const sortTaskByIndex = (data, mode = 'ascending') => {
 const updateListOfTasks = (section, data) => {
   data = sortTaskByIndex(data);
   data.forEach((task) => {
-    const li = document.createElement('li');
-    const input = `<input type="checkbox" id="${task.index}" name="${task.index}" value="${task.index}"></input>`;
-    const label = `<label for="${task.index}">${task.taskName
-      }</label>`;
-    li.innerHTML = input + label;
-    section.appendChild(li);
+    section.appendChild(getTaskItem(task));
   });
   const li = document.createElement('li');
   li.setAttribute('id', 'clear-list')
@@ -33,4 +42,4 @@ const addNewTaskEvent = (element, createTask, section) => {
     }
   });
 }
-export { updateListOfTasks as updateTask, sortTaskByIndex, addNewTaskEvent };
+export { updateListOfTasks as updateTask, sortTaskByIndex, addNewTaskEvent, getTaskItem };
