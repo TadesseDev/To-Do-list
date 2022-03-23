@@ -12,7 +12,8 @@ const updateListOfTasks = (section, data) => {
   data.forEach((task) => {
     const li = document.createElement('li');
     const input = `<input type="checkbox" id="${task.index}" name="${task.index}" value="${task.index}"></input>`;
-    const label = `<label for="${task.index}">${task.description}</label>`;
+    const label = `<label for="${task.index}">${task.taskName
+      }</label>`;
     li.innerHTML = input + label;
     section.appendChild(li);
   });
@@ -22,14 +23,12 @@ const updateListOfTasks = (section, data) => {
   console.log(li);
   section.appendChild(li);
 };
-
-const addNewTaskEvent = (element, createTask) => {
+const addNewTaskEvent = (element, createTask, section) => {
   element.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       const taskName = this.value;
       const task = createTask(taskName);
-      // task.addToDom();
-      console.log(task)
+      task.addToDom(section);
       // code for enter
     }
   });

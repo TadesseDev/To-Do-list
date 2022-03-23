@@ -13,4 +13,6 @@ const taskLocalStorage = (createTaskObject) => {
     return [];
   }
 }
-export default taskLocalStorage;
+
+const alterBookList = data => localStorage.setItem('taskList', JSON.stringify(data));
+export { taskLocalStorage as default, alterBookList };
