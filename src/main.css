@@ -45,7 +45,7 @@ li:hover {
   border-bottom: 1px solid rgba(192, 192, 192, 0.863);
 }
 
-li:last-child {
+#clear-list {
   background-color: rgba(192, 192, 192, 0.322);
 }
 

@@ -17,8 +17,21 @@ const updateListOfTasks = (section, data) => {
     section.appendChild(li);
   });
   const li = document.createElement('li');
+  li.setAttribute('id', 'clear-list')
   li.innerHTML = '<p>Clear all completed</p>';
+  console.log(li);
   section.appendChild(li);
 };
 
-export { updateListOfTasks as updateTask, sortTaskByIndex };
+const addNewTaskEvent = (element, createTask) => {
+  element.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      const taskName = this.value;
+      const task = createTask(taskName);
+      // task.addToDom();
+      console.log(task)
+      // code for enter
+    }
+  });
+}
+export { updateListOfTasks as updateTask, sortTaskByIndex, addNewTaskEvent };
