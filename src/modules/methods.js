@@ -1,15 +1,53 @@
 
+const deleteTask = (element, task) => {
+  const li = element.parentNode;
+  element.addEventListener('click', function (e) {
+    console.log('deleting task');
+    console.log(task);
+    task.removeFromTaskList();
+    li.parentNode.removeChild(li);
+  });
+}
+
+const alterTask = (element, deleteIcon) => {
+  const li = element.parentNode;
+  console.log(li);
+  element.addEventListener('click', function (e) {
+    console.log(this.parentNode);
+    li.appendChild(deleteIcon);
+    element.setAttribute('style', 'display: none');
+    deleteIcon.setAttribute('style', 'display: block');
+    // body
+  });
+
+  li.addEventListener('mouseleave', function (e) {
+    element.classList.remove('edit');
+    li.classList.remove('edit');
+    element.setAttribute('style', 'display: block');
+    deleteIcon.setAttribute('style', 'display: none');
+    // body
+  });
+}
+
 const getTaskItem = (task) => {
   const li = document.createElement('li');
+  li.setAttribute('id', task.index);
   const taskContent = document.createElement('div');
-  const input = `<input type="checkbox" id="${task.index}" name="${task.index}" value="${task.index}"></input>`;
-  const label = `<label for="${task.index}">${task.taskName
+  const input = `<input type="checkbox" id="${task.index}-check" name="${task.index}" value="${task.index}"></input>`;
+  const label = `<label for="${task.index}-check">${task.taskName
     }</label>`;
+  const deleteIcon = document.createElement('span');
+  deleteIcon.classList.add('task-icon');
+  deleteIcon.classList.add('edit');
+  deleteIcon.setAttribute('style', 'display: none');
   taskContent.innerHTML = input + label;
   const icon = document.createElement('span');
-  icon.classList.add('icon');
+  icon.classList.add('task-icon');
   li.appendChild(taskContent);
   li.appendChild(icon);
+  li.appendChild(deleteIcon);
+  alterTask(icon, deleteIcon);
+  deleteTask(deleteIcon, task);
   return li;
 }
 // can be used to sort tasks ascending or descending
@@ -36,9 +74,9 @@ const addNewTaskEvent = (element, createTask, section) => {
   element.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       const taskName = this.value;
+      this.value = "";
       const task = createTask(taskName);
       task.addToDom(section);
-      // code for enter
     }
   });
 }

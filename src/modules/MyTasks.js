@@ -4,7 +4,8 @@ import { getTaskItem } from '../modules/methods.js';
 class MyTasks {
   static tasks = [];
   static removeItem = (removeTask) => {
-    MyTasks.tasks = MyTasks.filter(task => task.index != removeTask.index);
+    console.log(removeTask);
+    MyTasks.tasks = MyTasks.tasks.filter(task => task.index != removeTask.index);
     alterBookList(MyTasks.tasks);
   }
   static addItem = (task) => {
@@ -25,7 +26,6 @@ class MyTasks {
     getTaskItem(this);
     section.insertBefore(getTaskItem(this), clear);
   }
-  removeFromTaskList = () => {
-  }
+  removeFromTaskList = () => MyTasks.removeItem(this);
 }
 export default MyTasks;

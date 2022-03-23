@@ -25,14 +25,29 @@ body {
   padding: 15px;
   font-size: 1.3rem;
   border-bottom: 1px solid rgba(192, 192, 192, 0.363);
+  background-color: white;
   overflow: hidden;
 }
-#to-do-lists .icon {
+#to-do-lists li.edit {
+  background-color: antiquewhite;
+}
+#to-do-lists .icon,
+#to-do-lists .task-icon {
   width: 30px;
   height: 30px;
   display: block;
   background: url("./icons/re-fresh.svg");
+  background-size: contain;
+  background-position: center;
 }
+#to-do-lists .task-icon {
+  background: url("./icons/menu_vertical.svg");
+}
+
+#to-do-lists .task-icon.edit {
+  background: url("./icons/trash_can.svg");
+}
+
 .title {
   font-size: 1.6rem;
 }
@@ -52,8 +67,9 @@ li:hover {
   border-bottom: 1px solid rgba(192, 192, 192, 0.863);
 }
 
-#clear-list {
+li#clear-list {
   background-color: rgba(192, 192, 192, 0.322);
+  display: block;
 }
 
 li p {
@@ -61,6 +77,10 @@ li p {
   text-align: center;
 }
 
+#to-do-lists div {
+  flex-grow: 1;
+}
+
 #to-do-lists li label {
-  margin-left: 5px;
+  margin-left: 5%;
 }
