@@ -14,3 +14,8 @@ const data = storedData(storedTaskTaskObject);// create task object from local s
 // update tasks to the DOM and associate event.
 updateTask(listContainer, data);
 addNewTaskEvent(document.getElementById('new-task'), taskTaskObject, listContainer);
+
+const clearList = document.getElementById('clear-list');
+clearList.addEventListener('click', () => {
+  MyTasks.clearCompleted();
+});
