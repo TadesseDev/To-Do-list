@@ -45,8 +45,9 @@ const alterTask = (element, deleteIcon, task) => {
 
 const createElementWithAttributes = (element, attr = {}) => {
   element = document.createElement(element);
-  for (const id in attr) {
-    element.setAttribute(id, attr[id]);
+  const objectArray = Object.entries(attr);
+  for (let i = 0; i < objectArray.length; i += 1) {
+    element.setAttribute(objectArray[i][0], objectArray[i][1]);
   }
   return element;
 };
