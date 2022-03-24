@@ -24,7 +24,7 @@ class MyTasks {
     }
     MyTasks.tasks = temp;
     // update task index on each remove
-    let i = 0;
+    let i = 1;
     MyTasks.tasks.forEach((task) => {
       task.index = i;
       i += 1;
@@ -38,7 +38,7 @@ class MyTasks {
   }
 
   // object can be constructed with previous store data or aas new
-  constructor(taskName, index = MyTasks.tasks.length, completed = false) {
+  constructor(taskName, index = MyTasks.tasks.length + 1, completed = false) {
     this.taskName = taskName;
     this.index = index;
     this.completed = completed;
