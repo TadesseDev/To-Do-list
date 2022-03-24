@@ -26,7 +26,6 @@ const alterTask = (element, deleteIcon, task) => {
   element.addEventListener('click', () => {
     li.classList.add('edit');
     li.appendChild(deleteIcon);
-    // <input type="text" id="new-task" placeholder="Add your list" />
     input.value = label.innerText;
     label.innerHTML = '';
     label.appendChild(input);
