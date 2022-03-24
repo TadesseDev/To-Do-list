@@ -1,3 +1,12 @@
+//
+
+// toggle task completed status
+const toggleTaskStatus = (element, task) => {
+  element.addEventListener('click', () => {
+    task.toggleStatus();
+  });
+};
+
 // used to delete a single task
 const deleteTask = (element, task) => {
   const li = element.parentNode;
@@ -17,7 +26,6 @@ const alterTask = (element, deleteIcon, task) => {
   element.addEventListener('click', () => {
     li.classList.add('edit');
     li.appendChild(deleteIcon);
-    // <input type="text" id="new-task" placeholder="Add your list" />
     input.value = label.innerText;
     label.innerHTML = '';
     label.appendChild(input);
@@ -34,19 +42,37 @@ const alterTask = (element, deleteIcon, task) => {
   });
 };
 
+const createElementWithAttributes = (element, attr = {}) => {
+  element = document.createElement(element);
+  const objectArray = Object.entries(attr);
+  for (let i = 0; i < objectArray.length; i += 1) {
+    element.setAttribute(objectArray[i][0], objectArray[i][1]);
+  }
+  return element;
+};
+
 // create a task item to be added to DOM
 const getTaskItem = (task) => {
   const li = document.createElement('li');
   li.setAttribute('id', task.index);
   const taskContent = document.createElement('div');
-  const input = `<input type="checkbox" id="label-${task.index}" name="${task.index}" value="${task.index}"></input>`;
-  const label = `<label for="label-${task.index}">${task.taskName
-  }</label>`;
+  const checkBox = createElementWithAttributes('input', {
+    type: 'checkbox',
+    id: `"label-${task.index}"`,
+    name: `"${task.index}"`,
+    value: `"${task.index}"`,
+  });
+  if (task.completed) checkBox.setAttribute('checked', true);
+  const label = createElementWithAttributes('label', {
+    for: `"label-${task.index}"`,
+  });
+  label.innerHTML = task.taskName;
   const deleteIcon = document.createElement('span');
   deleteIcon.classList.add('task-icon');
   deleteIcon.classList.add('edit');
   deleteIcon.setAttribute('style', 'display: none');
-  taskContent.innerHTML = input + label;
+  taskContent.appendChild(checkBox);
+  taskContent.appendChild(label);
   const icon = document.createElement('span');
   icon.classList.add('task-icon');
   li.appendChild(taskContent);
@@ -55,6 +81,7 @@ const getTaskItem = (task) => {
   li.setAttribute('tabindex', 0);
   alterTask(icon, deleteIcon, task);
   deleteTask(deleteIcon, task);
+  toggleTaskStatus(checkBox, task);
   return li;
 };
 

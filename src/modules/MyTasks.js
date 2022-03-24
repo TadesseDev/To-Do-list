@@ -5,6 +5,29 @@ import { getTaskItem } from './methods.js';
 class MyTasks {
   static tasks = [];
 
+  static clearCompleted = () => {
+    const temp = [];
+    for (let i = 0; i < MyTasks.tasks.length; i += 1) {
+      if (!MyTasks.tasks[i].completed) {
+        temp.push(MyTasks.tasks[i]);
+      } else {
+        MyTasks.tasks[i].removeFromDom();
+      }
+    }
+    MyTasks.tasks = temp;
+    alterBookList(MyTasks.tasks);
+  }
+
+  static updateStatus(task) {
+    for (let i = 0; i < MyTasks.tasks.length; i += 1) {
+      if (task === MyTasks.tasks[i]) {
+        MyTasks.tasks[i].completed = !MyTasks.tasks[i].completed;
+        break;
+      }
+    }
+    alterBookList(MyTasks.tasks);
+  }
+
   static updateData = (task, name) => {
     for (let i = 0; i < MyTasks.tasks.length; i += 1) {
       if (task === MyTasks.tasks[i]) {
@@ -60,8 +83,16 @@ class MyTasks {
     section.insertBefore(getTaskItem(this), clear);
   }
 
+  removeFromDom = () => {
+    const elements = Array.from(document.getElementsByTagName('li'));
+    const element = elements.filter(li => { return li.getAttribute('id') === String(this.index) });
+    element[0].remove();
+  }
+
   removeFromTaskList = () => MyTasks.removeItem(this);
 
   update = (name) => MyTasks.updateData(this, name);
+
+  toggleStatus = () => MyTasks.updateStatus(this);
 }
 export default MyTasks;
