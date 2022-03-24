@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 html,
 body {
@@ -15,7 +15,66 @@ body {
   transform: translate(-50%, -50%);
   box-shadow: 0 0 10px silver;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+li:hover {
+  border-bottom: 1px solid rgba(192, 192, 192, 0.863);
+}
+
+#to-do-lists li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 15px;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.363);
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+#to-do-lists li input[type="text"] {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+
+  /* margin-right: 10%; */
+  background: transparent;
+  padding-left: 10%;
+  z-index: 1;
+  outline: none;
+  border: none;
+}
+
+#to-do-lists li input[type="checkbox"] {
+  z-index: 2;
+}
+
+#to-do-lists li.edit {
+  background-color: antiquewhite;
+}
+
+#to-do-lists .icon,
+#to-do-lists .task-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: url("./icons/re-fresh.svg");
+  background-size: contain;
+  background-position: center;
+  z-index: 2;
+}
+
+#to-do-lists .task-icon {
+  background: url("./icons/menu_vertical.svg");
+}
+
+#to-do-lists .task-icon.edit {
+  background: url("./icons/trash_can.svg");
 }
 
 .title {
@@ -33,20 +92,9 @@ body {
   font-style: italic;
 }
 
-li {
-  list-style: none;
-  padding: 15px;
-  font-size: 1.3rem;
-  border-bottom: 1px solid rgba(192, 192, 192, 0.363);
-  overflow: hidden;
-}
-
-li:hover {
-  border-bottom: 1px solid rgba(192, 192, 192, 0.863);
-}
-
-li:last-child {
+li#clear-list {
   background-color: rgba(192, 192, 192, 0.322);
+  display: block;
 }
 
 li p {
@@ -54,6 +102,10 @@ li p {
   text-align: center;
 }
 
+#to-do-lists div {
+  flex-grow: 1;
+}
+
 #to-do-lists li label {
-  margin-left: 5px;
+  margin-left: 5%;
 }
