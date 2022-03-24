@@ -1,49 +1,47 @@
-
+// used to delete a single task
 const deleteTask = (element, task) => {
   const li = element.parentNode;
-  element.addEventListener('click', function (e) {
-    console.log('deleting task');
-    console.log(task);
+  element.addEventListener('click', () => {
     task.removeFromTaskList();
     li.parentNode.removeChild(li);
   });
-}
+};
 
+// used to update the task detail
 const alterTask = (element, deleteIcon, task) => {
   const li = element.parentNode;
   const input = document.createElement('input');
   input.IsTabStop = false;
   input.type = 'text';
   const label = li.querySelector('label');
-  element.addEventListener('click', function (e) {
-    console.log(document.focusedElement)
+  element.addEventListener('click', () => {
     li.classList.add('edit');
     li.appendChild(deleteIcon);
     // <input type="text" id="new-task" placeholder="Add your list" />
     input.value = label.innerText;
-    label.innerHTML = "";
+    label.innerHTML = '';
     label.appendChild(input);
-    console.log(input);
     element.setAttribute('style', 'display: none');
     deleteIcon.setAttribute('style', 'display: block');
     // body
   });
-  input.addEventListener('focusout', function (e) {
+  input.addEventListener('focusout', () => {
     li.classList.remove('edit');
     element.setAttribute('style', 'display: block');
     deleteIcon.setAttribute('style', 'display: none');
     label.innerHTML = input.value;
     task.update(input.value);
   });
-}
+};
 
+// create a task item to be added to DOM
 const getTaskItem = (task) => {
   const li = document.createElement('li');
   li.setAttribute('id', task.index);
   const taskContent = document.createElement('div');
-  const input = `<input type="checkbox" id="${task.index}-check" name="${task.index}" value="${task.index}"></input>`;
+  const input = `<input type="checkbox" id="label-${task.index}" name="${task.index}" value="${task.index}"></input>`;
   const label = `<label for="label-${task.index}">${task.taskName
-    }</label>`;
+  }</label>`;
   const deleteIcon = document.createElement('span');
   deleteIcon.classList.add('task-icon');
   deleteIcon.classList.add('edit');
@@ -58,7 +56,8 @@ const getTaskItem = (task) => {
   alterTask(icon, deleteIcon, task);
   deleteTask(deleteIcon, task);
   return li;
-}
+};
+
 // can be used to sort tasks ascending or descending
 const sortTaskByIndex = (data, mode = 'ascending') => {
   const tempData = [...data];
@@ -74,20 +73,22 @@ const updateListOfTasks = (section, data) => {
     section.appendChild(getTaskItem(task));
   });
   const li = document.createElement('li');
-  li.setAttribute('id', 'clear-list')
+  li.setAttribute('id', 'clear-list');
   li.innerHTML = '<p>Clear all completed</p>';
-  console.log(li);
   section.appendChild(li);
 };
-const addNewTaskEvent = (element, createTask, section) => {
 
+// add event to create a new task object and update it to the dom
+const addNewTaskEvent = (element, createTask, section) => {
   element.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       const taskName = this.value;
-      this.value = "";
+      this.value = '';
       const task = createTask(taskName);
       task.addToDom(section);
     }
   });
-}
-export { updateListOfTasks as updateTask, sortTaskByIndex, addNewTaskEvent, getTaskItem };
+};
+export {
+  updateListOfTasks as updateTask, sortTaskByIndex, addNewTaskEvent, getTaskItem,
+};

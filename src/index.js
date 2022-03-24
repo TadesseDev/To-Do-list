@@ -1,11 +1,16 @@
+// import all required modules
 import './main.css';
 import { updateTask, addNewTaskEvent } from './modules/methods.js';
 import storedData from './modules/localStorage.js';
 import MyTasks from './modules/MyTasks.js';
-const storedTask_taskObject = (task) => new MyTasks(task.taskName, task.index, task.completed);
-const task_taskObject = (taskName) => new MyTasks(taskName);
-const listContainer = document.getElementById('to-do-lists');
-const data = storedData(storedTask_taskObject)
+
+// declare constants we need through out the execution
+// declare call back functions
+const storedTaskTaskObject = (task) => new MyTasks(task.taskName, task.index, task.completed);
+const taskTaskObject = (taskName) => new MyTasks(taskName);
+const listContainer = document.getElementById('to-do-lists');// prepare section for use
+const data = storedData(storedTaskTaskObject);// create task object from local storage data
+
+// update tasks to the DOM and associate event.
 updateTask(listContainer, data);
-addNewTaskEvent(document.getElementById('new-task'), task_taskObject, listContainer);
-console.log(data);
+addNewTaskEvent(document.getElementById('new-task'), taskTaskObject, listContainer);
