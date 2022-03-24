@@ -9,23 +9,31 @@ const deleteTask = (element, task) => {
   });
 }
 
-const alterTask = (element, deleteIcon) => {
+const alterTask = (element, deleteIcon, task) => {
   const li = element.parentNode;
-  console.log(li);
+  const input = document.createElement('input');
+  input.IsTabStop = false;
+  input.type = 'text';
+  const label = li.querySelector('label');
   element.addEventListener('click', function (e) {
-    console.log(this.parentNode);
+    console.log(document.focusedElement)
+    li.classList.add('edit');
     li.appendChild(deleteIcon);
+    // <input type="text" id="new-task" placeholder="Add your list" />
+    input.value = label.innerText;
+    label.innerHTML = "";
+    label.appendChild(input);
+    console.log(input);
     element.setAttribute('style', 'display: none');
     deleteIcon.setAttribute('style', 'display: block');
     // body
   });
-
-  li.addEventListener('mouseleave', function (e) {
-    element.classList.remove('edit');
+  input.addEventListener('focusout', function (e) {
     li.classList.remove('edit');
     element.setAttribute('style', 'display: block');
     deleteIcon.setAttribute('style', 'display: none');
-    // body
+    label.innerHTML = input.value;
+    task.update(input.value);
   });
 }
 
@@ -34,7 +42,7 @@ const getTaskItem = (task) => {
   li.setAttribute('id', task.index);
   const taskContent = document.createElement('div');
   const input = `<input type="checkbox" id="${task.index}-check" name="${task.index}" value="${task.index}"></input>`;
-  const label = `<label for="${task.index}-check">${task.taskName
+  const label = `<label for="label-${task.index}">${task.taskName
     }</label>`;
   const deleteIcon = document.createElement('span');
   deleteIcon.classList.add('task-icon');
@@ -46,7 +54,8 @@ const getTaskItem = (task) => {
   li.appendChild(taskContent);
   li.appendChild(icon);
   li.appendChild(deleteIcon);
-  alterTask(icon, deleteIcon);
+  li.setAttribute('tabindex', 0);
+  alterTask(icon, deleteIcon, task);
   deleteTask(deleteIcon, task);
   return li;
 }
@@ -71,6 +80,7 @@ const updateListOfTasks = (section, data) => {
   section.appendChild(li);
 };
 const addNewTaskEvent = (element, createTask, section) => {
+
   element.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       const taskName = this.value;
