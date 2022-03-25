@@ -49,6 +49,7 @@ class MyTasks {
     // update task index on each remove
     let i = 1;
     MyTasks.tasks.forEach((task) => {
+      document.getElementById(String(task.index)).setAttribute('id', String(i));
       task.index = i;
       i += 1;
     });
@@ -85,7 +86,7 @@ class MyTasks {
 
   removeFromDom = () => {
     const elements = Array.from(document.getElementsByTagName('li'));
-    const element = elements.filter(li => { return li.getAttribute('id') === String(this.index) });
+    const element = elements.filter((li) => li.getAttribute('id') === String(this.index));
     element[0].remove();
   }
 
