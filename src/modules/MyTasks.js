@@ -5,6 +5,18 @@ import { getTaskItem } from './methods.js';
 class MyTasks {
   static tasks = [];
 
+
+  static updateTaskIndex = () => {
+    // update task index on each remove
+    let i = 1;
+    MyTasks.tasks.forEach((task) => {
+      document.getElementById(String(task.index)).setAttribute('id', String(i));
+      task.index = i;
+      i += 1;
+    });
+    alterBookList(MyTasks.tasks);
+  }
+
   static clearCompleted = () => {
     const temp = [];
     for (let i = 0; i < MyTasks.tasks.length; i += 1) {
@@ -15,6 +27,7 @@ class MyTasks {
       }
     }
     MyTasks.tasks = temp;
+    MyTasks.updateTaskIndex();
     alterBookList(MyTasks.tasks);
   }
 
@@ -46,13 +59,7 @@ class MyTasks {
       }
     }
     MyTasks.tasks = temp;
-    // update task index on each remove
-    let i = 1;
-    MyTasks.tasks.forEach((task) => {
-      document.getElementById(String(task.index)).setAttribute('id', String(i));
-      task.index = i;
-      i += 1;
-    });
+    MyTasks.updateTaskIndex();
     alterBookList(MyTasks.tasks);
   }
 
