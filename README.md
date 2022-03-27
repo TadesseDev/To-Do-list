@@ -19,7 +19,7 @@
 
 ## Getting Started
 
-1. Open [mani branch](https://github.com/Tadesse-Alemayehu/To-Do-list)
+1. Open [main branch](https://github.com/Tadesse-Alemayehu/To-Do-list)
 2. Open VSCode or terminal and navigate to the folder where you would like to clone the project.
 3. Type "pwd" to see your working directory.
 4. [clone repository](git@github.com:Tadesse-Alemayehu/To-Do-list)(git clone "branch-link")
