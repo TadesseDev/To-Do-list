@@ -15,7 +15,7 @@
 
 ## Live Demo
 
-[Down load the project and use webpack](https://github.com/Tadesse-Alemayehu/To-Do-list/tree/list-structure) 🙂
+[Go Live](https://tadesse-alemayehu.github.io/To-Do-list/) 🙂
 
 ## Getting Started
 
