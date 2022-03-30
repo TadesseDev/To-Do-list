@@ -1,4 +1,4 @@
-# Awesome book project with ES6 syntax.
+# To-Do-list.
 
 ### Objectives of this project
 
