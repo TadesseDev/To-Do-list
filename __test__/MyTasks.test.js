@@ -63,3 +63,21 @@ describe('Test editing task description', () => {
   expect(newTask2.taskName).toBe('task two');
   expect(newTask3.taskName).toBe('task three now has new name');
 });
+describe('updating an items completed status', () => {
+  const checkbox1 = li1.querySelector('input[type="checkbox"]');
+  const checkbox2 = li2.querySelector('input[type="checkbox"]');
+  const checkbox3 = li3.querySelector('input[type="checkbox"]');
+  let checkBoxStatus1 = newTask1.completed;
+  let checkBoxStatus2 = newTask2.completed;
+  let checkBoxStatus3 = newTask3.completed;
+  checkbox1.click();
+  expect(newTask1.completed).not.toBe(checkBoxStatus1);
+  expect(newTask2.completed).toBe(checkBoxStatus2);
+  expect(newTask3.completed).toBe(checkBoxStatus3);
+  checkBoxStatus1 = newTask1.completed;
+  checkbox2.click();
+  checkbox3.click();
+  expect(newTask1.completed).toBe(checkBoxStatus1);
+  expect(newTask2.completed).not.toBe(checkBoxStatus2);
+  expect(newTask3.completed).not.toBe(checkBoxStatus3);
+});
