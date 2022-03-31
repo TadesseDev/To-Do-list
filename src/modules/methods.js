@@ -24,7 +24,6 @@ const alterTask = (element, deleteIcon, task) => {
   input.type = 'text';
   const label = li.querySelector('label');
   element.addEventListener('click', () => {
-    console.log('testing click');
     li.classList.add('edit');
     li.appendChild(deleteIcon);
     input.value = label.innerHTML;
@@ -35,7 +34,6 @@ const alterTask = (element, deleteIcon, task) => {
     // body
   });
   input.addEventListener('focusout', () => {
-    console.log('testing focus out');
     li.classList.remove('edit');
     element.setAttribute('style', 'display: block');
     deleteIcon.setAttribute('style', 'display: none');
