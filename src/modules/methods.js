@@ -107,12 +107,26 @@ const updateListOfTasks = (section, data) => {
 
 // add event to create a new task object and update it to the dom
 const addNewTaskEvent = (element, createTask, section) => {
+  const input = document.getElementById('new-task');
   element.addEventListener('keypress', function (e) {
+    if (input.value === '')
+      return;
     if (e.key === 'Enter') {
-      const taskName = this.value;
-      this.value = '';
+      const taskName = input.value;
+      input.value = '';
       const task = createTask(taskName);
       task.addToDom(section);
+    }
+  });
+  element.addEventListener('click', function (e) {
+    if (input.value === '')
+      return;
+    if (element.getAttribute('id') === 'enterIcon') {
+      const taskName = input.value;
+      input.value = '';
+      const task = createTask(taskName);
+      task.addToDom(section);
+      console.log(element.getAttribute('id'));
     }
   });
 };
