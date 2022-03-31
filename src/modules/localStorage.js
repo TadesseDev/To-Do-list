@@ -15,5 +15,8 @@ const taskLocalStorage = (createTaskObject) => {
 };
 
 // on data changes
-const alterBookList = (data) => localStorage.setItem('taskList', JSON.stringify(data));
+const alterBookList = (data) => {
+
+  localStorage.setItem('taskList', JSON.stringify(data));
+}
 export { taskLocalStorage as default, alterBookList };
