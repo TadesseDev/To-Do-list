@@ -109,3 +109,20 @@ li p {
 #to-do-lists li label {
   margin-left: 5%;
 }
+
+#add-new-task-li {
+  position: relative;
+}
+
+#enterIcon {
+  position: absolute;
+  transform: translate(-100%, 0);
+  left: 95%;
+  top: 0;
+  width: 7%;
+  height: 100%;
+  background-image: url("./icons/return.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
