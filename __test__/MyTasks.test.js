@@ -14,3 +14,15 @@ describe('adding elements to the task list and local storage', () => {
     expect(MyTasks.tasks.length).toBe(3);
   });
 });
+
+describe('check the DOM for add and remove tasks', () => {
+  test('check adding task to the DOM', () => {
+    expect(section.querySelectorAll('li').length).toBe(0);
+    newTask1.addToDom(section);
+    expect(section.querySelectorAll('li').length).toBe(1);
+    newTask2.addToDom(section);
+    expect(section.querySelectorAll('li').length).toBe(2);
+    newTask3.addToDom(section);
+    expect(section.querySelectorAll('li').length).toBe(3);
+  });
+})
