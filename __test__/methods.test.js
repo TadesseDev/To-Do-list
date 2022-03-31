@@ -42,14 +42,20 @@ describe('updating an items completed status', () => {
   let checkBoxStatus1 = newTask1.completed;
   let checkBoxStatus2 = newTask2.completed;
   let checkBoxStatus3 = newTask3.completed;
-  checkbox1.click();
-  expect(newTask1.completed).not.toBe(checkBoxStatus1);
-  expect(newTask2.completed).toBe(checkBoxStatus2);
-  expect(newTask3.completed).toBe(checkBoxStatus3);
-  checkBoxStatus1 = newTask1.completed;
-  checkbox2.click();
-  checkbox3.click();
-  expect(newTask1.completed).toBe(checkBoxStatus1);
-  expect(newTask2.completed).not.toBe(checkBoxStatus2);
-  expect(newTask3.completed).not.toBe(checkBoxStatus3);
+  test('test only the status for task one is updated', () => {
+    checkbox1.click();
+    expect(newTask1.completed).not.toBe(checkBoxStatus1);
+    expect(newTask2.completed).toBe(checkBoxStatus2);
+    expect(newTask3.completed).toBe(checkBoxStatus3);
+  });
+
+  test('test only the status for task one and two is updated', () => {
+    checkBoxStatus1 = newTask1.completed;
+    checkbox2.click();
+    checkbox3.click();
+    expect(newTask1.completed).toBe(checkBoxStatus1);
+    expect(newTask2.completed).not.toBe(checkBoxStatus2);
+    expect(newTask3.completed).not.toBe(checkBoxStatus3);
+  })
+
 });
