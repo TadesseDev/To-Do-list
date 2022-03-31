@@ -1,10 +1,10 @@
 import MyTasks from '../src/modules/MyTasks.js';
-import { getTaskItem } from '../src/modules/methods.js';
+import { getTaskItem, toggleTaskStatus } from '../src/modules/methods.js';
 
 const newTask1 = new MyTasks('task one');
 const li1 = getTaskItem(newTask1);
 const newTask2 = new MyTasks('task two');
-// const li2 = document.createElement('li').setAttribute('id', '2');
+const li2 = getTaskItem(newTask2);
 const newTask3 = new MyTasks('task three');
 const li3 = getTaskItem(newTask3);
 document.body.innerHTML = '<ul id="to-do-lists"></ul>';
@@ -62,8 +62,4 @@ describe('Test editing task description', () => {
   expect(newTask1.taskName).toBe('the first task');
   expect(newTask2.taskName).toBe('task two');
   expect(newTask3.taskName).toBe('task three now has new name');
-});
-
-describe('Test editing task description', () => {
-
 });
