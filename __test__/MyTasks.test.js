@@ -1,9 +1,9 @@
-import MyTasks from "../src/modules/MyTasks";
+import MyTasks from '../src/modules/MyTasks.js';
 
 const newTask1 = new MyTasks('task one');
 const newTask2 = new MyTasks('task two');
 const newTask3 = new MyTasks('task three');
-document.body.innerHTML = `<ul id="to-do-lists"></ul>`;
+document.body.innerHTML = '<ul id="to-do-lists"></ul>';
 
 const section = document.getElementById('to-do-lists');
 describe('adding elements to the task list and local storage', () => {
@@ -34,4 +34,4 @@ describe('check the DOM for add and remove tasks', () => {
     newTask3.removeFromDom(section);
     expect(section.querySelectorAll('li').length).toBe(0);
   });
-})
+});

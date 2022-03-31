@@ -5,7 +5,6 @@ import { getTaskItem } from './methods.js';
 class MyTasks {
   static tasks = [];
 
-
   static updateTaskIndex = () => {
     // update task index on each remove
     let i = 1;
