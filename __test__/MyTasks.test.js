@@ -25,4 +25,13 @@ describe('check the DOM for add and remove tasks', () => {
     newTask3.addToDom(section);
     expect(section.querySelectorAll('li').length).toBe(3);
   });
+  test('check removing task from the DOM', () => {
+    expect(section.querySelectorAll('li').length).toBe(3);
+    newTask1.removeFromDom(section);
+    expect(section.querySelectorAll('li').length).toBe(2);
+    newTask2.removeFromDom(section);
+    expect(section.querySelectorAll('li').length).toBe(1);
+    newTask3.removeFromDom(section);
+    expect(section.querySelectorAll('li').length).toBe(0);
+  });
 })
