@@ -1,8 +1,12 @@
 import MyTasks from '../src/modules/MyTasks.js';
+import { getTaskItem } from '../src/modules/methods.js';
 
 const newTask1 = new MyTasks('task one');
+const li1 = getTaskItem(newTask1);
 const newTask2 = new MyTasks('task two');
+// const li2 = document.createElement('li').setAttribute('id', '2');
 const newTask3 = new MyTasks('task three');
+const li3 = getTaskItem(newTask3);
 document.body.innerHTML = '<ul id="to-do-lists"></ul>';
 
 const section = document.getElementById('to-do-lists');
@@ -34,4 +38,32 @@ describe('check the DOM for add and remove tasks', () => {
     newTask3.removeFromDom(section);
     expect(section.querySelectorAll('li').length).toBe(0);
   });
+});
+
+//-----------------------------------------------------------
+describe('Test editing task description', () => {
+  let editTaskOne = li1.querySelector('.task-icon');
+  let label = li1.querySelectorAll('label')[0];
+  editTaskOne.click();
+  let input = label.querySelectorAll('input')[0];
+  input.value = "the first task";
+  let saveEdit = new Event('focusout');
+  input.dispatchEvent(saveEdit);
+  expect(newTask1.taskName).toBe('the first task');
+  expect(newTask2.taskName).toBe('task two');
+  expect(newTask3.taskName).toBe('task three');
+  editTaskOne = li3.querySelector('.task-icon');
+  label = li3.querySelectorAll('label')[0];
+  editTaskOne.click();
+  input = label.querySelectorAll('input')[0];
+  input.value = "task three now has new name";
+  saveEdit = new Event('focusout');
+  input.dispatchEvent(saveEdit);
+  expect(newTask1.taskName).toBe('the first task');
+  expect(newTask2.taskName).toBe('task two');
+  expect(newTask3.taskName).toBe('task three now has new name');
+});
+
+describe('Test editing task description', () => {
+
 });

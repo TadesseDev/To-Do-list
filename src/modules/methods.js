@@ -24,9 +24,10 @@ const alterTask = (element, deleteIcon, task) => {
   input.type = 'text';
   const label = li.querySelector('label');
   element.addEventListener('click', () => {
+    console.log('testing click');
     li.classList.add('edit');
     li.appendChild(deleteIcon);
-    input.value = label.innerText;
+    input.value = label.innerHTML;
     label.innerHTML = '';
     label.appendChild(input);
     element.setAttribute('style', 'display: none');
@@ -34,6 +35,7 @@ const alterTask = (element, deleteIcon, task) => {
     // body
   });
   input.addEventListener('focusout', () => {
+    console.log('testing focus out');
     li.classList.remove('edit');
     element.setAttribute('style', 'display: block');
     deleteIcon.setAttribute('style', 'display: none');
@@ -126,10 +128,9 @@ const addNewTaskEvent = (element, createTask, section) => {
       input.value = '';
       const task = createTask(taskName);
       task.addToDom(section);
-      console.log(element.getAttribute('id'));
     }
   });
 };
 export {
-  updateListOfTasks as updateTask, sortTaskByIndex, addNewTaskEvent, getTaskItem,
+  updateListOfTasks as updateTask, sortTaskByIndex, addNewTaskEvent, getTaskItem
 };
