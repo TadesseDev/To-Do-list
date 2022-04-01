@@ -1,5 +1,5 @@
 import MyTasks from '../src/modules/MyTasks.js';
-import { getTaskItem, toggleTaskStatus } from '../src/modules/methods.js';
+import { getTaskItem } from '../src/modules/methods.js';
 
 const newTask1 = new MyTasks('task one');
 const li1 = getTaskItem(newTask1);

@@ -93,7 +93,7 @@ class MyTasks {
   removeFromDom = () => {
     const elements = Array.from(document.getElementsByTagName('li'));
     const element = elements.filter((li) => li.getAttribute('id') === String(this.index));
-    element[0] && element[0].remove();
+    if (element[0]) element[0].remove();
   }
 
   removeFromTaskList = () => MyTasks.removeItem(this);

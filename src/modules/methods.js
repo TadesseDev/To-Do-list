@@ -117,7 +117,7 @@ const addNewTaskEvent = (element, createTask, section) => {
       task.addToDom(section);
     }
   });
-  element.addEventListener('click', (e) => {
+  element.addEventListener('click', () => {
     if (input.value === '') { return; }
     if (element.getAttribute('id') === 'enterIcon') {
       const taskName = input.value;
