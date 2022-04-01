@@ -26,7 +26,7 @@ const alterTask = (element, deleteIcon, task) => {
   element.addEventListener('click', () => {
     li.classList.add('edit');
     li.appendChild(deleteIcon);
-    input.value = label.innerText;
+    input.value = label.innerHTML;
     label.innerHTML = '';
     label.appendChild(input);
     element.setAttribute('style', 'display: none');
@@ -107,10 +107,21 @@ const updateListOfTasks = (section, data) => {
 
 // add event to create a new task object and update it to the dom
 const addNewTaskEvent = (element, createTask, section) => {
-  element.addEventListener('keypress', function (e) {
+  const input = document.getElementById('new-task');
+  element.addEventListener('keypress', (e) => {
+    if (input.value === '') { return; }
     if (e.key === 'Enter') {
-      const taskName = this.value;
-      this.value = '';
+      const taskName = input.value;
+      input.value = '';
+      const task = createTask(taskName);
+      task.addToDom(section);
+    }
+  });
+  element.addEventListener('click', () => {
+    if (input.value === '') { return; }
+    if (element.getAttribute('id') === 'enterIcon') {
+      const taskName = input.value;
+      input.value = '';
       const task = createTask(taskName);
       task.addToDom(section);
     }
