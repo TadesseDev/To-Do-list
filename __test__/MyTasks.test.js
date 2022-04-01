@@ -36,4 +36,3 @@ describe('check the DOM for add and remove tasks', () => {
     expect(section.querySelectorAll('li').length).toBe(0);
   });
 });
-
