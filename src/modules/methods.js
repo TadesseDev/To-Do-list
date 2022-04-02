@@ -52,7 +52,7 @@ const createElementWithAttributes = (element, attr = {}) => {
 };
 
 // create a task item to be added to DOM
-const getTaskItem = (task) => {
+const getTaskItem = task => {
   const li = document.createElement('li');
   li.setAttribute('id', task.index);
   const taskContent = document.createElement('div');
@@ -96,7 +96,7 @@ const sortTaskByIndex = (data, mode = 'ascending') => {
 // sort and update list of tasks to the place holder
 const updateListOfTasks = (section, data) => {
   data = sortTaskByIndex(data);
-  data.forEach((task) => {
+  data.forEach(task => {
     section.appendChild(getTaskItem(task));
   });
   const li = document.createElement('li');
@@ -108,7 +108,7 @@ const updateListOfTasks = (section, data) => {
 // add event to create a new task object and update it to the dom
 const addNewTaskEvent = (element, createTask, section) => {
   const input = document.getElementById('new-task');
-  element.addEventListener('keypress', (e) => {
+  element.addEventListener('keypress', e => {
     if (input.value === '') { return; }
     if (e.key === 'Enter') {
       const taskName = input.value;
