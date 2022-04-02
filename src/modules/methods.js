@@ -1,5 +1,3 @@
-//
-
 // toggle task completed status
 const toggleTaskStatus = (element, task) => element.addEventListener('click', () => task.toggleStatus());
 
