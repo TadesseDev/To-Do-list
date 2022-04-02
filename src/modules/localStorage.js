@@ -1,9 +1,9 @@
 // on reload
-const taskLocalStorage = createTaskObject => {
+const taskLocalStorage = (createTaskObject) => {
   if (localStorage.getItem('taskList')) {
     const taskList = [];
     const tempTasks = JSON.parse(localStorage.getItem('taskList'));
-    tempTasks.forEach(task => {
+    tempTasks.forEach((task) => {
       const taskObject = createTaskObject(task);
       taskList.push(taskObject);
     });
@@ -15,7 +15,7 @@ const taskLocalStorage = createTaskObject => {
 };
 
 // on data changes
-const alterBookList = data => {
+const alterBookList = (data) => {
   localStorage.setItem('taskList', JSON.stringify(data));
 };
 export { taskLocalStorage as default, alterBookList };

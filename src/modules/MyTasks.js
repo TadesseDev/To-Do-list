@@ -19,7 +19,11 @@ class MyTasks {
   static clearCompleted = () => {
     const temp = [];
     for (let i = 0; i < MyTasks.tasks.length; i += 1) {
-      MyTasks.tasks[i].completed ? MyTasks.tasks[i].removeFromDom() : temp.push(MyTasks.tasks[i]);
+      if (!MyTasks.tasks[i].completed) {
+        temp.push(MyTasks.tasks[i]);
+      } else {
+        MyTasks.tasks[i].removeFromDom();
+      }
     }
     MyTasks.tasks = temp;
     MyTasks.updateTaskIndex();
