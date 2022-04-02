@@ -1,11 +1,7 @@
 //
 
 // toggle task completed status
-const toggleTaskStatus = (element, task) => {
-  element.addEventListener('click', () => {
-    task.toggleStatus();
-  });
-};
+const toggleTaskStatus = (element, task) => element.addEventListener('click', () => task.toggleStatus());
 
 // used to delete a single task
 const deleteTask = (element, task) => {
@@ -96,9 +92,7 @@ const sortTaskByIndex = (data, mode = 'ascending') => {
 // sort and update list of tasks to the place holder
 const updateListOfTasks = (section, data) => {
   data = sortTaskByIndex(data);
-  data.forEach(task => {
-    section.appendChild(getTaskItem(task));
-  });
+  data.forEach(task => section.appendChild(getTaskItem(task)));
   const li = document.createElement('li');
   li.setAttribute('id', 'clear-list');
   li.innerHTML = '<p>Clear all completed</p>';

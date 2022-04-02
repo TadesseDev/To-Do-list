@@ -16,6 +16,4 @@ updateTask(listContainer, data);
 addNewTaskEvent(document.getElementById('new-task'), taskTaskObject, listContainer);
 addNewTaskEvent(document.getElementById('enterIcon'), taskTaskObject, listContainer);
 const clearList = document.getElementById('clear-list');
-clearList.addEventListener('click', () => {
-  MyTasks.clearCompleted();
-});
+clearList.addEventListener('click', () => MyTasks.clearCompleted());
