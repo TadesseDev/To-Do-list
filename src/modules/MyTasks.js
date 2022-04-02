@@ -80,9 +80,7 @@ class MyTasks {
   this four methods in conjunction with the constructor and static methods provide a CRUD
   create,read,update,delete, functionality
    */
-  addToTaskList = () => {
-    MyTasks.addItem(this);
-  }
+  addToTaskList = () => MyTasks.addItem(this);
 
   addToDom(section) {
     const clear = document.getElementById('clear-list');
